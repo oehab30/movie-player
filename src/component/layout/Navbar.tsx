@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Search, Bell } from "lucide-react";
+import { Menu, X, Search, Bell, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Darkmode from "./Darkmode";
+import Searchbar from "../common/Searchbar";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [searchFocused, setSearchFocused] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
   const location = useLocation();
 
   useEffect(() => {
@@ -46,28 +48,41 @@ function Navbar() {
         </div>
 
         {/* Right Section: Search & Actions */}
-        <div className="flex items-center gap-4 md:gap-8">
-          {/* Search Bar - Desktop */}
-          <div className={`hidden md:flex items-center relative group transition-all duration-300 ${searchFocused ? 'w-64' : 'w-48'}`}>
-            <Search className={`absolute left-4 w-4 h-4 transition-colors ${searchFocused ? 'text-red-600' : 'text-gray-400'}`} />
-            <input
-              type="text"
-              placeholder="Titles, people, genres"
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-              className="w-full bg-white/5 border border-white/10 rounded-full py-2 pl-12 pr-4 text-xs text-white focus:outline-hidden focus:border-red-600 focus:bg-white/10 transition-all placeholder:text-gray-600"
-            />
-          </div>
+        <div className="flex items-center gap-4 md:gap-8 lg:gap-5">
 
+  {/* Download Icon */}
+<Download
+  className="w-4 h-4 cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110 "
+
+/>
+
+  {/* Search Icon */}
+<Search
+  className="w-4 h-4 cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110 "
+  onClick={() => setShowSearch(true)}
+/>
+
+{/* Searchbar component */}
+{showSearch && (
+  <Searchbar onClose={() => setShowSearch(false)} />
+)}
+
+
+
+          {/* Notifications */}
           <div className="flex items-center gap-2">
-            <button className="p-2 text-gray-400 hover:text-white transition-colors relative">
+            <button className="p-2 text-gray-400   relative cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110">
               <Bell className="w-5 h-5" />
               <span className="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full border-2 border-black"></span>
             </button>
 
           </div>
 
+          {/* Dark Mode Toggle */}
+          <div className="hidden lg:block">
           <Darkmode />
+          </div>
+
 
           {/* User Profile Hook/Button */}
           <button className="hidden sm:block">
@@ -75,6 +90,9 @@ function Navbar() {
               Login
             </div>
           </button>
+
+
+
 
           {/* Mobile Menu Button */}
           <button
@@ -85,6 +103,7 @@ function Navbar() {
           </button>
         </div>
       </div>
+
 
       {/* Mobile Drawer */}
       <AnimatePresence>
