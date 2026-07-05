@@ -51,7 +51,7 @@ function Home() {
         <>
         <div className="min-h-screen bg-[#0a0a0a] text-white">
             <Hero />
-            
+
             <div className="container mx-auto px-6 py-12 lg:py-20">
                 {/* Section Header */}
                 <div className="mb-12">
@@ -71,7 +71,7 @@ function Home() {
         </div>
 
         <div className="min-h-screen bg-[#0a0a0a] text-white">
-            
+
             <div className="container mx-auto px-6 py-12 lg:py-20">
                 {/* Section Header */}
                 <div className="mb-12">

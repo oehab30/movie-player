@@ -26,12 +26,12 @@ function Navbar() {
   ];
 
   return (
-    <nav className={`fixed w-full z-100 transition-all duration-500 ${scrolled ? 'bg-black/90 backdrop-blur-xl py-2 shadow-2xl' : 'bg-linear-to-b from-black/80 to-transparent py-4'}`}>
+    <nav className={`fixed w-full z-100 transition-all duration-500 ${scrolled ? 'bg-background/90 backdrop-blur-xl py-2 shadow-2xl' : 'bg-linear-to-b from-background/80 to-transparent py-4'}`}>
       <div className="max-w-screen-2xl mx-auto flex justify-between items-center px-6 lg:px-12">
         {/* Left Section: Logo & Desktop Links */}
         <div className="flex items-center gap-10">
           <Link to="/" className="flex items-center gap-1.5 group">
-            <span className="text-2xl font-black tracking-tighter uppercase text-white transition-colors duration-500 group-hover:text-red-600">Cine<span className="text-red-600 group-hover:text-white">Play</span></span>
+            <span className="text-2xl font-black tracking-tighter uppercase text-foreground transition-colors duration-500 group-hover:text-red-600">Cine<span className="text-red-600 group-hover:text-foreground">Play</span></span>
           </Link>
 
           <div className="hidden lg:flex items-center gap-8">
@@ -39,7 +39,7 @@ function Navbar() {
               <Link
                 key={link.name}
                 to={link.path}
-                className={`text-[11px] font-extrabold uppercase tracking-widest transition-all hover:text-white ${location.pathname === link.path ? 'text-red-600 underline underline-offset-8 decoration-2' : 'text-gray-400'}`}
+                className={`text-[11px] font-extrabold uppercase tracking-widest transition-all hover:text-foreground ${location.pathname === link.path ? 'text-red-600 underline underline-offset-8 decoration-2' : 'text-gray-400'}`}
               >
                 {link.name}
               </Link>
@@ -52,13 +52,13 @@ function Navbar() {
 
   {/* Download Icon */}
 <Download
-  className="w-4 h-4 cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110 "
+  className="w-4 h-4 cursor-pointer transition-all duration-300 text-foreground  hover:text-brand-primary hover:scale-110 "
 
 />
 
   {/* Search Icon */}
 <Search
-  className="w-4 h-4 cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110 "
+  className="w-4 h-4 cursor-pointer transition-all duration-300 text-foreground hover:text-brand-primary hover:scale-110 "
   onClick={() => setShowSearch(true)}
 />
 
@@ -71,9 +71,9 @@ function Navbar() {
 
           {/* Notifications */}
           <div className="flex items-center gap-2">
-            <button className="p-2 text-gray-400   relative cursor-pointer transition-all duration-300 hover:text-red-600 hover:scale-110">
-              <Bell className="w-5 h-5" />
-              <span className="absolute top-2 right-2 w-2 h-2 bg-red-600 rounded-full border-2 border-black"></span>
+            <button className="p-2 text-gray-400   relative cursor-pointer transition-all duration-300 hover:text-brand-primary hover:scale-110">
+              <Bell className="w-5 h-5  text-foreground " />
+              <span className="absolute top-2 right-2 w-2 h-2 bg-brand-primary rounded-full border-2 border-black"></span>
             </button>
 
           </div>
@@ -86,7 +86,7 @@ function Navbar() {
 
           {/* User Profile Hook/Button */}
           <button className="hidden sm:block">
-            <div className="w-8 h-8 p-4 px-6 rounded bg-red-600 flex items-center justify-center font-bold text-xs text-white">
+            <div className="w-8 h-8 p-4 px-6 rounded bg-brand-primary flex items-center justify-center font-bold text-xs text-white">
               Login
             </div>
           </button>
@@ -124,7 +124,7 @@ function Navbar() {
               className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#0f0f0f] z-201 lg:hidden shadow-2xl flex flex-col p-8"
             >
               <div className="flex items-center justify-between mb-12">
-                <span className="text-xl font-extrabold tracking-tighter text-white">Cine<span className="text-red-600">Play</span></span>
+                <span className="text-xl font-extrabold tracking-tighter text-white">Cine<span className="text-brand-primary">Play</span></span>
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="p-2 text-gray-500 hover:bg-white/5 rounded-full transition-colors"
@@ -139,7 +139,7 @@ function Navbar() {
                   <input
                     type="text"
                     placeholder="Search movies..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-sm text-white focus:outline-hidden focus:border-red-600"
+                    className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-4 text-sm text-white focus:outline-hidden focus:border-brand-primary"
                   />
                 </div>
               </div>
@@ -155,7 +155,7 @@ function Navbar() {
                     <Link
                       to={link.path}
                       onClick={() => setMenuOpen(false)}
-                      className={`text-xl font-bold tracking-tight py-2 ${location.pathname === link.path ? 'text-red-600' : 'text-white hover:text-red-600'}`}
+                      className={`text-xl font-bold tracking-tight py-2 ${location.pathname === link.path ? 'text-brand-primary' : 'text-white hover:text-brand-primary'}`}
                     >
                       {link.name}
                     </Link>
@@ -164,7 +164,7 @@ function Navbar() {
               </div>
 
               <div className="mt-auto pt-8 border-t border-white/5 space-y-6">
-                <button className="w-full py-4 bg-red-600 text-white rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-lg shadow-red-600/20 active:scale-[0.98] transition-all">
+                <button className="w-full py-4 bg-brand-primary text-white rounded-xl font-bold uppercase tracking-widest text-[10px] shadow-lg shadow-red-600/20 active:scale-[0.98] transition-all">
                   Try Premium Free
                 </button>
               </div>
